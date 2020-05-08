@@ -51,15 +51,14 @@ function articleComponent(item) {
 }
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles').then(response => {
-
+    console.log(response.data)
     const articles = Object.values(response.data.articles);
-    console.log(articles, 'articles')
 
     const cardsContainer = document.querySelector('.cards-container');
 
-    articles.forEach(function (item) {
-        item.forEach(function (item) {
-            cardsContainer.append(articleComponent(item))
+    articles.forEach(function (topic) {
+        topic.forEach(function (article) {
+            cardsContainer.append(articleComponent(article))
         })
     });
 
